@@ -88,7 +88,8 @@ public class Login extends BaseClass {
 		
 		Thread.sleep(1000);
 		
-	}
+	} 
+
 
 	@When("User Select scrip {string}")
 	public void user_select_scrip(String string) throws InterruptedException {
@@ -2824,6 +2825,17 @@ public class Login extends BaseClass {
 
 		driver.findElement(By.xpath("//a[text()='Bank']//parent::li")).click();
 		Thread.sleep(1000);
+		
+		try {
+			
+			driver.findElement(By.xpath("(//a[contains(text(),'Ok')])[1]")).click();
+			Thread.sleep(1000);
+			
+			
+		} catch (Exception e) {
+			driver.findElement(By.xpath("(//a[contains(text(),'Cancel')])[1]")).click();
+			Thread.sleep(1000);
+		}
 
 		driver.findElement(By.xpath("(//img[@class='icon show_icon'])[2]")).click();
 
@@ -2995,6 +3007,16 @@ public class Login extends BaseClass {
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("(//img[@class='icon show_icon'])[1]")).click();
 
+		try {
+			
+			driver.findElement(By.xpath("(//a[contains(text(),'Ok')])[1]")).click();
+			Thread.sleep(1000);
+			
+			
+		} catch (Exception e) {
+			driver.findElement(By.xpath("(//a[contains(text(),'Cancel')])[1]")).click();
+			Thread.sleep(1000);
+		}
 		Thread.sleep(1000);
 		driver.findElement(By.xpath("(//img[@class='icon show_icon'])[2]")).click();
 
