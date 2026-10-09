@@ -1,7 +1,11 @@
 package com.stepdefinition;
 
 import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -32,12 +36,12 @@ public class BackOffice extends BaseClass {
 			String string, String string2, String string3) throws InterruptedException, AWTException {
 		Thread.sleep(1000);
 
-		driver.findElement(By.xpath("(//b[@class='collapse-sign'])[2]")).click();
+		driver.findElement(By.xpath("//span[text()='Trading']")).click();
 		Thread.sleep(1000);
 
 		// clickAnElement("//span[text()='TradeReg']//ancestor::button");
 		driver.findElement(By.xpath("(//span[text()='Trade Register']//parent::span)[1]")).click();
-		Thread.sleep(10000);
+		Thread.sleep(1000);
 		// clickAnElement("//span[text()='TradeReg']//ancestor::button");
 		// Thread.sleep(10000);
 
@@ -52,36 +56,31 @@ public class BackOffice extends BaseClass {
 
 		clickAnElement("//input[@id='DateFrom']");
 		Thread.sleep(2000);
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+Thread.sleep(2000);
+		
+		Robot robot = new Robot();
+		
+		
+		robot.keyPress(KeyEvent.VK_LEFT);
+        robot.keyRelease(KeyEvent.VK_LEFT);
+        
+        robot.keyPress(KeyEvent.VK_BACK_SPACE);
+		robot.keyRelease(KeyEvent.VK_BACK_SPACE);
+		Thread.sleep(2000);
 
-		for (int i = 0; i <= 100; i++) {
-			// Wait for the "Prev" button to be clickable
-			WebElement element2 = wait.until(ExpectedConditions
-					.elementToBeClickable(By.xpath("//div[@id='ui-datepicker-div']//descendant::span[text()='Prev']")));
-
-			// Wait for the month element to be visible (it could be any month, not just
-			// "September")
-			WebElement monthElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
-					"//div[@id='ui-datepicker-div']//descendant::div[@class='ui-datepicker-title']/span[@class='ui-datepicker-month']")));
-
-			String currentMonth = monthElement.getText(); // Get the current month text dynamically
-
-			// If the current month is "January", select the 1st date and break the loop
-			if (currentMonth.equals("January")) {
-				driver.findElement(By.xpath("//table[@class='ui-datepicker-calendar']/tbody/tr/td//a[text()='1']"))
-						.click();
-				break; // Exit the loop once January is found
-			} else {
-				element2.click(); // Click "Prev" to go to the previous month
-			}
-		}
+		robot.keyPress(KeyEvent.VK_0);
+		robot.keyRelease(KeyEvent.VK_0);
+		
+		robot.keyPress(KeyEvent.VK_1);
+		robot.keyRelease(KeyEvent.VK_1);
+		Thread.sleep(1000);
 
 		Thread.sleep(2000);
 
 		// driver.findElement(By.xpath("//input[@id='DateFrom']")).sendKeys(Keys.ENTER);
 
-		Thread.sleep(2000);
-
+		
+		
 	}
 
 	@When("User Click Statements and Reports")
@@ -214,66 +213,65 @@ public class BackOffice extends BaseClass {
 	}
 
 	@When("User Open Dropdown and Click Positions")
-	public void user_open_dropdown_and_click_positions() throws InterruptedException {
-		Thread.sleep(2000);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		Thread.sleep(2000);
-		WebElement element3 = driver.findElement(By.xpath("//span[text()='Trading']"));
+	public void user_open_dropdown_and_click_positions() throws InterruptedException, AWTException {
+		Thread.sleep(1000);
 
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,500);");
+		driver.findElement(By.xpath("//span[text()='Trading']")).click();
+		Thread.sleep(1000);
 
-		js.executeScript("arguments[0].scrollIntoView(true);", element3);
-
-		js.executeScript("arguments[0].click();", element3);
-
-		Thread.sleep(2000);
-		clickAnElement("//span[text()='Net Positions']");
+		// clickAnElement("//span[text()='TradeReg']//ancestor::button");
+		driver.findElement(By.xpath("(//span[text()='Net Positions']//parent::span)[1]")).click();
 		Thread.sleep(10000);
+		// clickAnElement("//span[text()='TradeReg']//ancestor::button");
+		// Thread.sleep(10000);
 
 		WebElement element = driver.findElement(By.xpath("//iframe[@class='tab-pane active']"));
 		driver.switchTo().frame(element);
 		Thread.sleep(6000);
 
-		driver.findElement(By.xpath("//select[@id='DateType']")).click();
+		// clickAnElement("//input[@role='textbox']");
 
-		WebElement element2 = driver.findElement(By.xpath("//select[@id='DateType']"));
-		Select s = new Select(element2);
-		s.selectByVisibleText("Date Range ");
-
+		// sendKeys("//input[@role='textbox']", string);
+		Thread.sleep(2000);
+		
+		WebElement element3 = driver.findElement(By.xpath("//select[@name='DateType']"));
+		Select s=new Select(element3);
+		s.selectByVisibleText("Date Range");
+//
+//		WebElement element31 = driver.findElement(By.xpath("//input[@id='Date1']"));
+//		String currentDateStr = element31.getAttribute("value");
+//		
+//		 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//	        LocalDate currentDate = LocalDate.parse(currentDateStr, formatter);
+//	        LocalDate targetDate = currentDate.minusMonths(6);
+//	        System.out.println(targetDate);
+//		Thread.sleep(2000);
+		clickAnElement("//input[@id='Date1']");
+		
+		 
+		Thread.sleep(2000);
+		
+		Robot robot = new Robot();
+		
+		
+		robot.keyPress(KeyEvent.VK_LEFT);
+        robot.keyRelease(KeyEvent.VK_LEFT);
+        
+        robot.keyPress(KeyEvent.VK_BACK_SPACE);
+		robot.keyRelease(KeyEvent.VK_BACK_SPACE);
 		Thread.sleep(2000);
 
-		driver.findElement(By.xpath("//input[@id='Date1']")).click();
-
-		Thread.sleep(6000);
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
-		for (int i = 0; i <= 100; i++) {
-			// Wait for the "Prev" button to be clickable
-			WebElement element4 = wait.until(ExpectedConditions
-					.elementToBeClickable(By.xpath("//div[@id='ui-datepicker-div']//descendant::span[text()='Prev']")));
-
-			// Wait for the month element to be visible (it could be any month, not just
-			// "September")
-			WebElement monthElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
-					"//div[@id='ui-datepicker-div']//descendant::div[@class='ui-datepicker-title']/span[@class='ui-datepicker-month']")));
-			Thread.sleep(2000);
-
-			String currentMonth = monthElement.getText(); // Get the current month text dynamically
-
-			// If the current month is "January", select the 1st date and break the loop
-			if (currentMonth.equals("January")) {
-				Thread.sleep(2000);
-
-				driver.findElement(By.xpath("//table[@class='ui-datepicker-calendar']/tbody/tr/td//a[text()='1']"))
-						.click();
-				break; // Exit the loop once January is found
-			} else {
-				Thread.sleep(2000);
-
-				element4.click(); // Click "Prev" to go to the previous month
-			}
-		}
+		robot.keyPress(KeyEvent.VK_0);
+		robot.keyRelease(KeyEvent.VK_0);
+		
+		robot.keyPress(KeyEvent.VK_1);
+		robot.keyRelease(KeyEvent.VK_1);
+		Thread.sleep(1000);
+		
+//		Actions actions = new Actions(driver);
+//		WebElement element2 = driver.findElement(By.xpath("//input[@name='cmdok']"));
+//		actions.moveToElement(element2).click().perform();
+		Thread.sleep(2000);
 
 		driver.findElement(By.xpath("//input[@value=' View']")).click();
 		Thread.sleep(2000);
@@ -442,5 +440,3 @@ public class BackOffice extends BaseClass {
 	}
 
 }
-
-

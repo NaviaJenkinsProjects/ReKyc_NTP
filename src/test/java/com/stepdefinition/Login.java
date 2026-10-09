@@ -88,8 +88,7 @@ public class Login extends BaseClass {
 		
 		Thread.sleep(1000);
 		
-	} 
-
+	}
 
 	@When("User Select scrip {string}")
 	public void user_select_scrip(String string) throws InterruptedException {

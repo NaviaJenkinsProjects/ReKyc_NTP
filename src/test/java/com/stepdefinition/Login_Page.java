@@ -264,36 +264,6 @@ public class Login_Page extends BaseClass {
 	
 	Thread.sleep(2000);
 	
-	try {
-		
-		driver.switchTo().alert().accept();
-
-		driver.findElement(By.xpath("//button[@data-dhx-id='close']")).click();
-	} catch (Exception e) {
-		driver.findElement(By.xpath("//button[@data-dhx-id='close']")).click();
-	}
-		
-	
-	try {
-		
-		Actions s=new Actions(driver);
-		WebElement element = driver.findElement(By.xpath("//div[@class='user-name']"));
-		
-		s.moveToElement(element).perform();
-		Thread.sleep(1000);
-		s.click(element).perform();
-		Thread.sleep(1000);
-		
-		
-		WebElement element1 = driver.findElement(By.xpath("//li[@class='Light']"));
-		s.moveToElement(element1).perform();
-		Thread.sleep(1000);
-		s.click(element1).perform();
-		Thread.sleep(1000);
-		
-	} catch (Exception e) {
-		// TODO: handle exception
-	}
 	
 	
 	

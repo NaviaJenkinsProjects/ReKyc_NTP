@@ -34,7 +34,8 @@ public class Runner {
 
     @AfterClass
     public static void afterSuite() {
-      //BaseClass.quitBrowser();
+      
+    	BaseClass.quitBrowser();
     }
 }
 

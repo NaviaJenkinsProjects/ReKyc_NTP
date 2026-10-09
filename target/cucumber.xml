@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="177.888" tests="2" skipped="0" failures="0" errors="0">
-<testcase classname="Check the ReKyc Functionality in Dashboard" name="Login Navia" time="53.418">
+<testsuite name="Cucumber" time="180.418" tests="2" skipped="0" failures="0" errors="0">
+<testcase classname="Check the ReKyc Functionality in Dashboard" name="Login Navia" time="49.249">
 <system-out><![CDATA[
 Given User Navigate to Navia................................................passed
 When User Click login with client code......................................passed
@@ -12,7 +12,7 @@ And User Click Otp Verification and enter manualy...........................pass
 And User Click Login Again..................................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Check the ReKyc Functionality in Dashboard" name="User Check Rekyc all the Functionality" time="124.005">
+<testcase classname="Check the ReKyc Functionality in Dashboard" name="User Check Rekyc all the Functionality" time="130.785">
 <system-out><![CDATA[
 When Navigate to home page..................................................passed
 When User mouse over Dashboard..............................................passed

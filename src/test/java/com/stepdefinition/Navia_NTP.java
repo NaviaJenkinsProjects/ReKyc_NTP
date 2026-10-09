@@ -1822,13 +1822,15 @@ Thread.sleep(2000);
 					
 					try {
 						
-						driver.findElement(By.xpath("(//span[text()='Modify'])[1]")).click();
+						WebElement element2 = driver.findElement(By.xpath("(//span[text()='Modify'])[1]"));
+						element2.click();
 						
 					} catch (Exception e2) {
 						
 						driver.switchTo().defaultContent();
 						WebElement elemet21 = driver.findElement(By.xpath("(//span[text()='Modify'])[1]"));
-						g.moveToElement(elemet21).doubleClick().perform();
+						g.moveToElement(elemet21).click().perform();
+						System.out.println("hi");
 						
 						
 					}
